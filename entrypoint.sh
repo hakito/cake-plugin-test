@@ -11,6 +11,19 @@ if [ ! -f /plugin_name ]; then
     cd /cakephp/app/Plugin
 
     ln -s /plugin $PLUGIN_NAME
+
+    cd ..
+    echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+    <phpunit bootstrap=\"Vendor/autoload.php\">
+    <filter>
+        <whitelist>
+            <directory suffix=\".php\">Plugin/$PLUGIN_NAME</directory>
+            <exclude>
+                <directory suffix=\".php\">Plugin/$PLUGIN_NAME/Test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    </phpunit>" > phpunit.xml    
 fi
 
 PLUGIN_NAME=$(cat /plugin_name)

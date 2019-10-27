@@ -12,6 +12,10 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 COPY --from=fetch_cake /app/vendor/cakephp/cakephp /cakephp
 WORKDIR /cakephp/app
 RUN ln -s /plugin/Vendor
+RUN apk add build-base autoconf
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+RUN apk del build-base autoconf
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
