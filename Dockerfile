@@ -13,5 +13,6 @@ COPY --from=fetch_cake /app/vendor/cakephp/cakephp /cakephp
 WORKDIR /cakephp/app
 RUN ln -s /plugin/Vendor
 COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD []
