@@ -20,6 +20,7 @@ if [ ! -f /plugin_name ]; then
             <directory suffix=\".php\">Plugin/$PLUGIN_NAME</directory>
             <exclude>
                 <directory suffix=\".php\">Plugin/$PLUGIN_NAME/Test</directory>
+                <directory suffix=\".php\">Plugin/$PLUGIN_NAME/Vendor</directory>                
             </exclude>
         </whitelist>
     </filter>
